@@ -1,0 +1,5 @@
+###
+POST http://localhost:5000/api/insert/insert-product
+
+###
+POST http://localhost:5000/api/insert/insert-category
