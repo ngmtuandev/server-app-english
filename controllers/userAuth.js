@@ -12,12 +12,6 @@ var store = require("store");
 
 const userController = {
   register: asyncHandler(async (req, res) => {
-    // const validateEmail = (email) => {
-    //       return email?.match(
-    //         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    //       );
-    //     };
-    // console.log('is email : ', validateEmail(req.email))
     const { email, password, firstName, lastName } = req.body;
     console.log("req >>>>>", req.body);
     if (!email || !password || !firstName || !lastName) {
@@ -38,13 +32,6 @@ const userController = {
         });
       } else {
         const token = renderToken();
-        // console.log('-------------------------------')
-        // console.log('check cookie >>>', req.cookies.userData)
-        // console.log('{...req.body, token}', {...req.body, token})
-        // console.log('check cookie after >>>', req.cookies.userData)
-        // res.cookie('userData', '{a: 123}', { maxAge: 900000});
-
-        // storage.setItemSync('userData', JSON.stringify({...req.body, token}));
 
         store.set("user", { ...req.body, token });
 
