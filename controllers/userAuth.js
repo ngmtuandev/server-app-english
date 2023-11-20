@@ -94,6 +94,7 @@ const userController = {
   }),
   login: asyncHandler(async (req, res) => {
     const { email, password, confirmpassword } = req.body;
+    console.log("login : ", req.body);
     if (!email || !password) {
       return res.status(400).json({
         success: false,
@@ -133,6 +134,7 @@ const userController = {
             const { password, role, ...userLogin } = checkUserExist.toObject();
             const accessToken = await createAccessToken(userLogin._id, role);
             let refreshTokenAccount = await refreshToken(userLogin._id);
+            console.log("use login", userLogin);
             res.cookie("refreshToken", refreshTokenAccount, {
               httpOnly: "true",
               maxAge: 259200000,
